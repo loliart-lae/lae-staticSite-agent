@@ -100,6 +100,6 @@ EOF;
 
         $output = ['status' => 1, 'data' => $arr];
         Lock::release();
-        return $output;
+        return json_encode($output);
     }
 }
