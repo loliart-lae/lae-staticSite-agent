@@ -1,3 +1,4 @@
 lock.lock
 ftp.json
 workerman.log
+core/*
