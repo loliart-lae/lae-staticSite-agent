@@ -7,7 +7,8 @@ class Site
     {
         Lock::lock();
         $request = $request->get();
-        $id = 'site-' . $request['id'];
+        $real_id = $request['id'];
+        $id = 'site-' . $real_id;
         $domain = $request['domain'];
         $username = $request['username'];
         $password = $request['password'];
@@ -42,6 +43,7 @@ EOF;
         console("Creating ftp account...");
         $account = json_decode(file_get_contents('ftp.json'), true);
         $account['sites'][$id] = [
+            'id' => $real_id,
             'username' => $username,
             'password' => $password,
             'path' => $path
