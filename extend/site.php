@@ -31,8 +31,8 @@ class Site
 
         console("Creating caddy file...");
         $conf = <<<EOF
-http://{$domain}:8080 {
-#    tls $email
+{$domain} {
+    tls $email
     root * core/www/{$id}
     file_server browse
 }
