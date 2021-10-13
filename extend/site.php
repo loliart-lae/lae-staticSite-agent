@@ -92,8 +92,6 @@ EOF;
         Lock::lock();
         $dirs = json_decode(file_get_contents('ftp.json'), true);
 
-        $arr = ['sites'];
-
         foreach ($dirs['sites'] as $dir) {
             $arr['sites'][$dir['id']][] = getRealSize(getDirSize($dir['path']));
         }
