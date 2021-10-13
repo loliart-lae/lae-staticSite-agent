@@ -2,6 +2,11 @@
 
 class Lock
 {
+
+    public function __construct() {
+        
+    }
+
     public static function lock()
     {
         $i = 0;
