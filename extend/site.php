@@ -95,8 +95,10 @@ EOF;
 
         $dirs = json_decode(file_get_contents('ftp.json'), true);
 
+        $arr = ['sites'];
+
         foreach ($dirs['sites'] as $dir) {
-            $arr['sites'][] = [
+            $arr[] = [
                 'info' => [
                     'id' => $dir['id'],
                     'size' => getRealSize(getDirSize($dir['path']))
