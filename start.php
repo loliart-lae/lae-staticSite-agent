@@ -4,7 +4,7 @@ use Workerman\Worker;
 
 require_once __DIR__ . '/config.php';
 
-$worker = new Worker("http://0.0.0.0:2345");
+$worker = new Worker('http://0.0.0.0:' . __TOKEN__);
 $worker->count = 1;
 
 Lock::release();

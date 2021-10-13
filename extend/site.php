@@ -88,5 +88,16 @@ EOF;
     static public function count()
     {
         Lock::lock();
+        $dirs = json_decode(file_get_contents('ftp.json'), true);
+
+        $arr = ['sites'];
+
+        foreach ($dirs['sites'] as $dir) {
+            $arr['sites'][$dir['id']][] = getRealSize(getDirSize($dir['path']));
+        }
+
+        $output = ['status' => 1, 'data' => $arr];
+        Lock::release();
+        return $output;
     }
 }
