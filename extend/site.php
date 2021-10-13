@@ -98,7 +98,7 @@ EOF;
         $arr = [];
 
         foreach ($dirs['sites'] as $dir) {
-            $arr['info'] = [
+            $arr['info'][] = [
                 'id' => $dir['id'],
                 'size' => getRealSize(getDirSize($dir['path']))
             ];
