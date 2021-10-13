@@ -92,11 +92,16 @@ EOF;
         Lock::lock();
 
         console("Counting sites folder size...");
-        
+
         $dirs = json_decode(file_get_contents('ftp.json'), true);
 
         foreach ($dirs['sites'] as $dir) {
-            $arr['sites'][] = ['id' => $dir['id'], 'size' => getRealSize(getDirSize($dir['path']))];
+            $arr['sites'][] = [
+                'info' => [
+                    'id' => $dir['id'],
+                    'size' => getRealSize(getDirSize($dir['path']))
+                ]
+            ];
         }
 
         $output = ['status' => 1, 'data' => $arr];
