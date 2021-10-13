@@ -11,7 +11,7 @@ class Site
         $id = 'site-' . $real_id;
         $domain = $request['domain'];
         $username = $request['username'];
-        $password = $request['password'];
+        $password = md5($request['password']);
         $email = $request['email'];
 
         $path = "core/www/{$id}";
