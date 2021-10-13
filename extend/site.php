@@ -90,6 +90,9 @@ EOF;
     static public function count()
     {
         Lock::lock();
+
+        console("Counting sites folder size...");
+        
         $dirs = json_decode(file_get_contents('ftp.json'), true);
 
         foreach ($dirs['sites'] as $dir) {
