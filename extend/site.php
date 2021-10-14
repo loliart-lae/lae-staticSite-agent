@@ -35,7 +35,7 @@ class Site
 {$domain} {
     tls $email
     root * core/www/{$id}
-    file_server browse
+    file_server
 }
 EOF;
         file_put_contents("core/sites/{$id}.lae", $conf);
