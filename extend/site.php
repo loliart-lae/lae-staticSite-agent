@@ -115,11 +115,12 @@ EOF;
         $real_id = $request['id'];
 
         $id = 'site-' . $real_id;
+        $filename = $request['filename'];
+
 
         $path = "core/www/{$id}";
-        $save_path = "core/www/{$id}/${$path}";
+        $save_path = "core/www/{$id}/{$filename}";
 
-        $filename = $request['filename'];
 
         Lock::lock();
 
