@@ -108,4 +108,33 @@ EOF;
         Lock::release();
         return json_encode($output);
     }
+
+    static public function backup($request)
+    {
+        $request = $request->get();
+        $real_id = $request['id'];
+
+        $id = 'site-' . $real_id;
+
+        $path = "core/www/{$id}";
+        $save_path = "core/www/{$id}/${$path}";
+
+        $filename = $request['filename'];
+
+        Lock::lock();
+
+        console("Backup site {$id} at {$save_path}.");
+
+        exec("tar zcvf {$save_path}.tar.gz $path");
+
+        Lock::release();
+        return json_encode([
+            'status' => 1,
+            'data' => [
+                'name' => $filename,
+                'path' => $path,
+                'save_path' => $save_path
+            ]
+        ]);
+    }
 }

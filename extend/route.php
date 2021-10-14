@@ -19,6 +19,10 @@ class Exec
                 return Site::count();
                 break;
 
+            case '/site/backup':
+                return Site::backup($request);
+                break;
+
             case '/sleep':
                 return sleep(600);
 
